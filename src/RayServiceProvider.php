@@ -191,7 +191,7 @@ class RayServiceProvider extends ServiceProvider
 
     protected function registerBladeDirectives(): self
     {
-        if (! $this->app->has('blade.compiler')) {
+        if (! $this->app->has('blade.compiler') || ! $this->app->has('files')) {
             return $this;
         }
 
