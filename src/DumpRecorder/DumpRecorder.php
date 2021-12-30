@@ -34,7 +34,7 @@ class DumpRecorder
         if (! static::$registeredHandler) {
             static::$registeredHandler = true;
 
-            $this->ensureOriginalHandlerExists();
+//            $this->ensureOriginalHandlerExists();
 
             $originalHandler = VarDumper::setHandler(function ($dumpedVariable) use ($multiDumpHandler) {
                 $multiDumpHandler->dump($dumpedVariable);

@@ -8,8 +8,6 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Stringable;
-use Illuminate\Testing\TestResponse;
 use Spatie\LaravelRay\Commands\PublishConfigCommand;
 use Spatie\LaravelRay\Payloads\MailablePayload;
 use Spatie\LaravelRay\Payloads\ModelPayload;
@@ -179,22 +177,6 @@ class RayServiceProvider extends ServiceProvider
 
             return $this;
         });
-
-        TestResponse::macro('ray', function () {
-            ray()->testResponse($this);
-
-            return $this;
-        });
-
-
-        Stringable::macro('ray', function (string $description = '') {
-            $description === ''
-                ? ray($this->value)
-                : ray($description, $this->value);
-
-            return $this;
-        });
-
 
         Builder::macro('ray', function () {
             $payload = new QueryPayload($this);
